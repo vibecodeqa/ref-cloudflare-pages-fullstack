@@ -1,0 +1,20 @@
+{
+  "name": "ref-cloudflare-pages-fullstack",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "build": "pnpm --filter @vcqa-ref/shared build && pnpm --filter @vcqa-ref/web build",
+    "typecheck": "pnpm --filter @vcqa-ref/shared build && pnpm -r --sort --if-present typecheck",
+    "test": "pnpm --filter @vcqa-ref/shared build && pnpm -r --sort --if-present test",
+    "smoke:preview": "pnpm build && node scripts/smoke-pages.mjs",
+    "deploy:shape": "node scripts/check-deploy-shape.mjs",
+    "ci": "pnpm typecheck && pnpm test && pnpm build && pnpm smoke:preview && pnpm deploy:shape",
+    "pages:dev": "pnpm build && wrangler pages dev web/dist --port 8788 --compatibility-date=2026-07-25 --binding ALLOW_LOCAL_AUTH_HEADER=true --binding PUBLIC_API_BASE=/api --binding AUTH_PROVIDER=local-preview"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260724.1",
+    "typescript": "^5.9.2",
+    "wrangler": "^4.26.0"
+  }
+}

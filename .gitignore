@@ -1,0 +1,9 @@
+node_modules/
+dist/
+web/dist/
+shared/dist/
+coverage/
+.wrangler/
+.dev.vars
+*.log
+

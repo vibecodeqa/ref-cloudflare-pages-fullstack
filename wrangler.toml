@@ -1,0 +1,19 @@
+name = "ref-cloudflare-pages-fullstack"
+compatibility_date = "2026-07-25"
+pages_build_output_dir = "web/dist"
+
+[vars]
+PUBLIC_API_BASE = "/api"
+AUTH_PROVIDER = "cloudflare-access"
+ALLOW_LOCAL_AUTH_HEADER = "false"
+
+[env.preview.vars]
+PUBLIC_API_BASE = "/api"
+AUTH_PROVIDER = "local-preview"
+ALLOW_LOCAL_AUTH_HEADER = "true"
+
+[env.production.vars]
+PUBLIC_API_BASE = "/api"
+AUTH_PROVIDER = "cloudflare-access"
+ALLOW_LOCAL_AUTH_HEADER = "false"
+
